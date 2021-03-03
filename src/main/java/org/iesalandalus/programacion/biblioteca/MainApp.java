@@ -18,9 +18,10 @@ public class MainApp {
 
 }
 
-/*
-Tarea: Biblioteca IES Al-Ándalus
-Profesor: José Ramón Jiménez Reyes
-Alumno: José Antonio Del Rey Martínez
-Curso: Programación, DAM IES ÁL-ANDALUS
+
+/**
+*Tarea: Biblioteca IES Al-Ándalus
+*Profesor: José Ramón Jiménez Reyes
+*Alumno: José Antonio Del Rey Martínez
+*Curso: Programación, DAM IES ÁL-ANDALUS
 */
