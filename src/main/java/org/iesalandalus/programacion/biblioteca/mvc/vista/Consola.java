@@ -42,39 +42,17 @@ public class Consola {
 	}
 	
 	public static Alumno leerAlumno() {
-		Alumno alumno = null;
-		Curso curso = null;
-		String nombre;
-		String correo;
-		int numeroCurso;
-		do {
-			System.out.print("Introduce el nombre del alumno: ");
-			nombre = Entrada.cadena();
-		} while (nombre.trim().length() == 0);
-		do {
-			System.out.print("Introduce el correo del alumno: ");
-			correo = Entrada.cadena();
-		} while(correo.trim().length() == 0);
-		do {
-			System.out.print("Introduce el curso del alumno: ");
-		    numeroCurso = Entrada.entero();
-		} while (numeroCurso < 1 || numeroCurso > 4  );
-		switch (numeroCurso) {
-		case 1: 
-			curso = Curso.PRIMERO;
-			break;
-		case 2:
-			curso = Curso.SEGUNDO;
-			break;
-		case 3:
-			curso = Curso.TERCERO;
-			break;
-		case 4:
-			curso = Curso.CUARTO;
-			break;	
+		System.out.printf("Introduce el nombre del alumno: ");
+		String nombre = Entrada.cadena();
+		System.out.print("Introduce el correo del alumno: ");
+		String correo = Entrada.cadena();
+		int curso = 0;
+		while (curso < 1 || curso > 4) {
+			System.out.print("Introduce el curso del alumno: [1.- PRIMERO, 2.-SEGUNDO, 3.-TERCERO, 4.-CUARTO] ");
+			curso = Entrada.entero();
 		}
-		alumno = new Alumno(nombre, correo, curso);
-		return alumno;
+		return new Alumno(nombre, correo, Curso.values()[curso - 1]);
+
 	}
 	
 	public static Alumno leerAlumnoFicticio() {
