@@ -11,6 +11,7 @@ import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Curso;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Libro;
 import org.iesalandalus.programacion.biblioteca.mvc.modelo.dominio.Prestamo;
 
+
 public class Vista {
 
 	private Controlador controlador;
@@ -24,7 +25,6 @@ public class Vista {
 	}
 
 	public void comenzar() {
-		Consola.mostrarCabecera("Gestión de la Biblioteca del IES Al-Ándalus");
 		int ordinalOpcion;
 		do {
 			Consola.mostrarMenu();
@@ -141,7 +141,8 @@ public class Vista {
 	public void devolverLibro() {
 		Consola.mostrarCabecera("Devolver Libro");
 		try {
-			controlador.devolver(Consola.leerPrestamoFicticio(), Consola.leerFecha("Introduce la fecha del prestamo: "));
+			controlador.devolver(Consola.leerPrestamoFicticio(), 
+			Consola.leerFecha("Introduce la fecha del prestamo: "));
 			System.out.println("Libro devuelto satisfactoriamente.");
 		} catch (OperationNotSupportedException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -234,17 +235,14 @@ public class Vista {
 		}
 	}
 
-	public void mostrarEstadisticaMensualPorCurso()
-	{
+	public void mostrarEstadisticaMensualPorCurso() {
+	
 		Consola.mostrarCabecera("Estadistica mensual por curso");
 		try {
-			Map<Curso, Integer> estadisticasMensualesPorCurso = controlador.getEstadisticaMensualPorCurso(Consola.leerFecha("Introduce la fecha del prestamo: "));
-			if (!estadisticasMensualesPorCurso.isEmpty()) {
-				System.out.println(estadisticasMensualesPorCurso);
-			} else {
-				System.out.println("No hay estadisticas mensuales a mostrar para ese mes.");
-			}
-		} catch (NullPointerException e) {
+			Map<Curso, Integer> estadisticasMensualesPorCurso = controlador
+					.getEstadisticaMensualPorCurso(Consola.leerFecha("Introduce la fecha para mostrar estadisticas: "));
+			System.out.println(estadisticasMensualesPorCurso);
+		} catch (NullPointerException | IllegalArgumentException e) {
 			e.getMessage();
 		}
 	}
